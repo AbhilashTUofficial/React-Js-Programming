@@ -1,0 +1,19 @@
+
+
+
+body  {
+
+    display:flex;
+    background-color: #282c34;
+    justify-content: center;
+
+
+}
+
+.cont{
+    
+    background-color: #ffffff;
+    width: 200px;
+    height: 100px;
+    
+}
