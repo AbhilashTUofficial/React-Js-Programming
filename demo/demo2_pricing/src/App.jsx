@@ -1,17 +1,26 @@
 import React from "react";
-import { AppBar, CssBaseline, Toolbar, Typography, Container, Grid, Box, Link } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { CssBaseline, Typography, Container, Grid, Box } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import NavBar from "./Components/NavBar";
+import Banner from "./Components/Banner";
+import Prices from "./Components/Prices";
+import Footer from "./Components/Footer";
 
 
 const customTheme = createTheme({
     palette: {
-     
+
         primary: {
-            main:"#0A1929",
-            
+            main: "#0A1929",
+            text: "#ffffff",
+            title: "#3399ff",
+            dim: "#226ab3"
+
         },
-        secondary:{
-            main:"#001E3C"
+        secondary: {
+            main: "#001E3C",
+            text: "#c0c0c0"
+
         }
     },
 });
@@ -22,47 +31,23 @@ const App = () => {
     return (<>
 
         <ThemeProvider theme={customTheme}>
-            <CssBaseline/>
-            <AppBar position="relative">
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{flexGrow:1, color: "white", textTransform: 'capitalize' }} >
-                        Company name
-                    </Typography>
+            <CssBaseline />
 
-                    <nav>
-                        
-                        <Link  underline='none'  variant="button" color="#ffffff" href="#" sx={{my:1,mx:1.5/* my: margin-y, mx: margin-x */,textTransform:'capitalize'}}>Features</Link>
-                        <Link  underline='none'  variant="button" color="#ffffff" href="#" sx={{my:1,mx:1.5/* my: margin-y, mx: margin-x */,textTransform:'capitalize'}}>Enterprise</Link>
-                        <Link  underline='none'  variant="button" color="#ffffff" href="#" sx={{my:1,mx:1.5/* my: margin-y, mx: margin-x */,textTransform:'capitalize'}}>Support</Link>
+            <NavBar />
 
-                    </nav>
-                    
-                </Toolbar>
-            
-            </AppBar>
+            <div style={{ backgroundColor: "#001E3C" }}>
 
-            <main >
-                <Container maxWidth="sm" >
-                    <Typography variant="h3" sx={{ margin:"60px 0", textAlign: "center", color: "#303030", textTransform: "uppercase", letterSpacing: 1 }} gutterBottom>
-                        Page Title
-                    </Typography>
-                    <Typography variant="h6" align="center" color="text.secondary" paragraph>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    </Typography>
-                   
-                </Container>
-                <Container maxWidth="md">
-                    <Grid container spacing={4} sx={{ padding: "20px 0" }}>
-                       
-                    </Grid>
-                </Container>
-            </main>
-            <Box sx={{padding:"20px 0"}}>
-                <Typography variant="subtitle1" sx={{ textAlign: "center" }} color="text.secondary">Copyright © Your Website 2022.</Typography>
-            </Box>
+                <Banner />
+
+                <Prices />
+
+                <Footer />
+
+            </div>
+
         </ThemeProvider>
     </>
-    )
-}
+    );
+};
 
 export default App;
