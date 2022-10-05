@@ -1,5 +1,5 @@
-# Demo websites
-I prefer to learn things by doing, these are some demo projects and clones which helped me understand the basics of React js and MUI.
+# React JS Programming
+This is fun.
 <br/>
 
 ### Languages & tools :
@@ -19,12 +19,15 @@ I prefer to learn things by doing, these are some demo projects and clones which
     |   |-- javascript_logo.png
     |   |-- materialui_logo.png
     |   |-- album_demo_1.png
-    |   |-- pricing_demo_1.jpeg
+    |   |-- pricing_demo_1.png
+    |   |-- signuplogin_demo_1.png
+    |   |-- signuplogin_demo_2.png
     |
     |-- demo
     |   |-- bethesda-clone
     |   |-- demo1_album
     |   |-- demo2_pricing
+    |   |-- demo3_signuplogin
     |   |-- test
     |   |-- README.md
     |
