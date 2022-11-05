@@ -1,25 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CartItem.module.css";
+import { connect } from "react-redux";
+import {
+  removeFromCart,
+  adjustItemQty,
+} from "../../../redux/Shopping/shopping-actions";
 
-const CartItem = () => {
+const CartItem = ({ itemData, removeFromCart, adjustItemQty }) => {
+  const [input, setInput] = useState(itemData.qty);
+  const onChangeHandler = (e) => {
+    setInput(e.target.value);
+    //! cant pass in input (state) directly
+    //! bcoz the state will not update automatically.
+    adjustItemQty(itemData.id, e.target.value);
+  };
   return (
     <div className={styles.cartItem}>
       <img
         className={styles.cartItem__image}
-        src={"https://image.flaticon.com/icons/svg/709/709519.svg"}
-        alt={""}
+        src={itemData.image}
+        alt={itemData.title}
       />
       <div className={styles.cartItem__details}>
-        <p className={styles.details__title}>Title</p>
-        <p className={styles.details__desc}>Description</p>
-        <p className={styles.details__price}>$ 10.00</p>
+        <p className={styles.details__title}>{itemData.title}</p>
+        <p className={styles.details__desc}>{itemData.description}</p>
+        <p className={styles.details__price}>$ {itemData.price}</p>
       </div>
       <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
           <label htmlFor="qty">Qty</label>
-          <input min="1" type="number" id="qty" name="qty" value="1" />
+          <input
+            min="1"
+            type="number"
+            id="qty"
+            name="qty"
+            value={input}
+            onChange={onChangeHandler}
+          />
         </div>
-        <button className={styles.actions__deleteItemBtn}>
+        <button
+          onClick={() => removeFromCart(itemData.id)}
+          className={styles.actions__deleteItemBtn}
+        >
           <img
             src="https://image.flaticon.com/icons/svg/709/709519.svg"
             alt=""
@@ -30,4 +52,11 @@ const CartItem = () => {
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeFromCart: (id) => dispatch(removeFromCart(id)),
+    adjustItemQty: (id, value) => dispatch(adjustItemQty(id, value)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CartItem);
