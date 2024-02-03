@@ -1,47 +1,46 @@
-import React, { Component } from 'react'
+import React, { useCallback, useMemo, useState } from 'react';
 import Counter from './components/Counter';
-import "./scss/index.scss"
-export default class App extends Component {
+import './scss/index.scss';
+import useRandomNumber from './hooks/useRandomNumber';
 
-  constructor(props){
-    super(props);
-    this.state={
-      count:0,
-    }
+function App() {
+  
+  const [count, setCount] = useState(useRandomNumber());
+
+  const printCount1=useCallback(()=>{
+    console.log(`useCallback: ${count}`)
+  },[count])
+
+  const calculateWithoutMemo=()=>{
+    console.log("Recalculating without memo")
+    return count+10;
   }
 
-  incrementCount = () => {
-    this.setState(prevState => ({
-      count: prevState.count + 1
-    }));
+  const calculateWithMemo=useMemo(()=>{
+    console.log("Recalculating with memo")
+    return count+10;
+  },[count])
+
+  console.log(calculateWithMemo)
+  console.log(calculateWithoutMemo())
+
+  printCount1();
+
+  const incrementCount = () => {
+    setCount(prevCount => prevCount + 1);
   };
 
-  decrementCount = () => {
-    this.setState(prevState => ({
-      count: prevState.count - 1
-    }));
+  const decrementCount = () => {
+    setCount(prevCount => prevCount - 1);
   };
 
- componentDidMount(){
-  // Executed after the component is rendered to the DOM.
-  console.log("Component Did Mount.")
- }
-
- componentDidUpdate(prevProps, prevState){
-  // Executed after the component's state or props updated.
-  console.log("Component State Changed.")
- }
-
- componentWillUnmount(){
-  // Executed just before the component is removed form the DOM tree.
- }
-
-
-  render() {
-    return (
-      <div className='app-container'>
-        <Counter count={this.state.count} incrementCount={this.incrementCount} decrementCount={this.decrementCount} />
-      </div>
-    )
-  }
+  return (
+    
+    <div className='app-container'>
+      
+      <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
+    </div>
+  );
 }
+
+export default App;
