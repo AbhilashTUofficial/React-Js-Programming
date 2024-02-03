@@ -1,0 +1,31 @@
+.container{
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    .count{
+        font-size: 42px;
+        text-align: center;
+        color: var(--text-color);
+    }
+    .btns{
+        display: flex;
+        justify-content:space-evenly;
+        .btn{
+            padding: 6px 1.6rem;
+            border-radius: 999px;
+            color:var(--text-color);
+
+        }
+        .increament{
+            background-color: var(--accent-color1);
+        }
+        .decreament{
+            background-color: var(--accent-color2);
+        }
+    }
+}
