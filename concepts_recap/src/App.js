@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import Counter from './components/Counter';
-import './scss/index.scss';
 import useRandomNumber from './hooks/useRandomNumber';
+import { Link } from 'react-router-dom';
+
 
 function App() {
   
@@ -31,14 +32,19 @@ function App() {
   };
 
   const decrementCount = () => {
+    console.log("sfd")
     setCount(prevCount => prevCount - 1);
   };
 
   return (
     
     <div className='app-container'>
-      
       <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
+      <div className='nav'>
+        <Link className='pages' to="/page1">Page1</Link>
+        <Link className='pages' to="/page2">Page2</Link>
+
+      </div>
     </div>
   );
 }

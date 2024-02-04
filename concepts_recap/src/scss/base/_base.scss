@@ -22,6 +22,7 @@ html {
         font-family:var(--font-family);
         background-color: var(--primary-color);
         display: flex;
+        flex-direction: column;
         height: 100vh;
         justify-content: center;
         align-items: center;
@@ -29,6 +30,19 @@ html {
             padding: 0;
             &::-webkit-scrollbar{
                 display: none;
+            }
+        }
+        .nav{
+            display: flex;
+            padding: 2rem;
+            border-radius: 6px;
+            padding: 8px 12px;
+            border:1px solid var(--secondary-color);
+            margin: 2rem;
+            .pages{
+                margin: 2px 16px;
+                color: var(--text-color);
+                text-decoration: none;
             }
         }
     }
