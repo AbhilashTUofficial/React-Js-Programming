@@ -1,34 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Page1 from './Pages/Page1';
-import Page2 from './Pages/Page2';
-import NotFoundPage from './Pages/NotFoundPage';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Page1 from "./Pages/Page1";
+import Page2 from "./Pages/Page2";
+import NotFoundPage from "./Pages/NotFoundPage";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App/>,
-    errorElement:<NotFoundPage/>
+    path: "/",
+    element: <App />,
+    errorElement: <NotFoundPage />,
   },
   {
-    path:'/Page1',
-    element:<Page1/>
+    path: "/Page1",
+    element: <Page1 />,
   },
   {
-    path:'/Page2/:id',
-    element:<Page2/>
-  }
-])
+    path: "/Page2/:id",
+    element: <Page2 />,
+  },
+]);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
