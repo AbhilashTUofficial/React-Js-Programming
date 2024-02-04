@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import Counter from './components/Counter';
 import useRandomNumber from './hooks/useRandomNumber';
 import { Link } from 'react-router-dom';
+import { decrementCount, incrementCount } from './Utils/CounterFunctions';
 
 
 function App() {
@@ -27,19 +28,12 @@ function App() {
 
   printCount1();
 
-  const incrementCount = () => {
-    setCount(prevCount => prevCount + 1);
-  };
 
-  const decrementCount = () => {
-    console.log("sfd")
-    setCount(prevCount => prevCount - 1);
-  };
 
   return (
     
     <div className='app-container'>
-      <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
+      <Counter count={count} incrementCount={()=>incrementCount({setCount})} decrementCount={()=>decrementCount({setCount})} />
       <div className='nav'>
         <Link className='pages' to="/page1">Page1</Link>
         <Link className='pages' to="/page2">Page2</Link>

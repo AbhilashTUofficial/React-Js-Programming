@@ -3,7 +3,7 @@ import React from 'react'
 function Counter({count,incrementCount, decrementCount}) {
   return (
     <div className='container'>
-      <div className='count'>
+      <div data-testid={"count"} className='count'>
         {count}
       </div>
       <div className='btns'>
